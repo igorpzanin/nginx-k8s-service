@@ -1,21 +1,9 @@
 #!/bin/bash
 
-set -e  # Encerra o script se qualquer comando falhar
-set -o pipefail  # Garante que falhas em pipelines sejam tratadas como erro
+set -e  
+set -o pipefail  
 
-echo "Iniciando a implantação dos serviços no Kubernetes..."
-
-# Diretórios dos manifests
-MANIFESTS_DIR="manifests"
-HPA_DIR="hpa"
-
-# Verifica se o cluster está ativo
-echo "Verificando se o cluster Kubernetes está rodando"
-if ! kubectl cluster-info > /dev/null 2>&1; then
-  echo "O cluster Kubernetes não está ativo. Por favor, inicie o Kind ou configure o acesso."
-  exit 1
-fi
-
+echo "Iniciando a remoção dos serviços no Kubernetes..."
 
 # deletar ingress-controller
 kubectl delete -f https://kind.sigs.k8s.io/examples/ingress/deploy-ingress-nginx.yaml

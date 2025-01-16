@@ -1,19 +1,15 @@
 #!/bin/bash
 
-set -e  # Encerra o script se qualquer comando falhar
-set -o pipefail  # Garante que falhas em pipelines sejam tratadas como erro
+set -e
+set -o pipefail  
 
 echo "Iniciando a implantação dos serviços no Kubernetes..."
-
-# Diretórios dos manifests
-MANIFESTS_DIR="manifests"
-HPA_DIR="hpa"
 
 # Verifica se o cluster está ativo
 echo "Verificando se o cluster Kubernetes está rodando"
 if ! kubectl cluster-info > /dev/null 2>&1; then
-  echo "O cluster Kubernetes não está ativo. Iniciando o cluster kind."
-  kind create cluster
+  echo "O cluster Kubernetes não está ativo. Inicie o cluster kind."
+  exit 1
 fi
 
 # Etapa 1: Configuração do cluster Kind
