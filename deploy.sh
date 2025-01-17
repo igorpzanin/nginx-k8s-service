@@ -14,8 +14,8 @@ fi
 
 # Etapa 1: Configuração do cluster Kind
 echo "Configurando o cluster Kind"
-if [ -f "$KIND_DIR/kind-config.yaml" ]; then
-  kind create cluster --config "$KIND_DIR/kind-config.yaml"
+if [ -f "kind/kind-config.yaml" ]; then
+  kind create cluster --config kind/kind-config.yaml
 else
   echo "Arquivo de configuração do Kind não encontrado."
 fi
