@@ -6,7 +6,7 @@ set -o pipefail
 echo "Iniciando a remoção dos serviços no Kubernetes..."
 
 # deletar ingress-controller
-ubectl delete -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.8.0/deploy/static/provider/kind/deploy.yaml
+kubectl delete -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.8.0/deploy/static/provider/kind/deploy.yaml
 
 # deletar nginx
 echo "Deletando o nginx"
