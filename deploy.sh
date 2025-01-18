@@ -21,7 +21,7 @@ else
 fi
 
 # Etapa 2: Implantar ingress-controller
-kubectl apply -f https://kind.sigs.k8s.io/examples/ingress/deploy-ingress-nginx.yaml
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.8.0/deploy/static/provider/kind/deploy.yaml
 echo "Aguardando ingress-controller ser iniciado completamente."
 kubectl wait --namespace ingress-nginx \
   --for=condition=ready pod \
@@ -45,6 +45,8 @@ echo "Configurando HPA"
 cd ../hpa
 kubectl apply -f hpa.yml
 
+#Etapa 6: setando true para ingress
+kubectl label node kind-control-plane ingress-ready=true
 # Exibe o status dos recursos implantados
 kubectl get pods --all-namespaces
 

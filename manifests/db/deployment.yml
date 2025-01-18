@@ -16,7 +16,18 @@ spec:
         image: mysql:latest
         resources:
           limits:
-            memory: "128Mi"
+            memory: "512Mi"
             cpu: "500m"
         ports:
         - containerPort: 3306
+        env:
+        - name: MYSQL_USER
+          valueFrom:
+            secretKeyRef:
+              name: db-credentials  # Nome do Secret que você criou
+              key: username       # Chave correspondente no Secret
+        - name: MYSQL_ROOT_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: db-credentials  # Nome do Secret que você criou
+              key: password       # Chave correspondente no Secret
