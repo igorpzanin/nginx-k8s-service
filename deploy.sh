@@ -12,14 +12,6 @@ if ! kubectl cluster-info > /dev/null 2>&1; then
   exit 1
 fi
 
-# Etapa 1: Configuração do cluster Kind
-echo "Configurando o cluster Kind"
-if [ -f "kind/kind-config.yaml" ]; then
-  kind create cluster --config kind/kind-config.yaml
-else
-  echo "Arquivo de configuração do Kind não encontrado."
-fi
-
 # Etapa 2: Implantar ingress-controller
 kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.8.0/deploy/static/provider/kind/deploy.yaml
 echo "Aguardando ingress-controller ser iniciado completamente."
