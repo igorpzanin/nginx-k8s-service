@@ -13,7 +13,8 @@ if ! kubectl cluster-info > /dev/null 2>&1; then
 fi
 
 # Etapa 2: Implantar ingress-controller
-kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.8.0/deploy/static/provider/kind/deploy.yaml
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.12.0/deploy/static/provider/cloud/deploy.yaml
+
 echo "Aguardando ingress-controller ser iniciado completamente."
 kubectl wait --namespace ingress-nginx \
   --for=condition=ready pod \
